@@ -65,35 +65,35 @@ for t=T:-1:1
 end
 %%
 %plot pontos de cada estado possível
-% for t=1:1:T
-%     plot(t,X,'r.','MarkerSize',20);
-%     hold on;
-%     for i=1:size(X,2)
-%         text(t,X(i)+100,strcat('c*=',num2str(fix(c(i,t)))));
-%         text(t,X(i),strcat('q*=',num2str(fix(q(i,t)))));
-%         if(t<T)
-%             plot([t t+1], [X(i) x_next(X(i),y(t),q(i,t))]);
-%         end;
-%     end
-% end
-% axis([1-1 T+1 X(1)-1000 X(end)+1000]);
-% xlabel('Estágio t');
-% ylabel('Volume Reservatório [hm³]');
-
-%%
-%plot solução ótima
-X_atual=22950;
 for t=1:1:T
-    plot(t,X_atual,'r.','MarkerSize',20);
+    plot(t,X,'r.','MarkerSize',20);
     hold on;
-    [row,col]=find(X==X_atual)
-    text(t,X_atual+100,strcat('c*=',num2str(fix(c(col,t)))));
-    text(t,X_atual,strcat('q*=',num2str(fix(q(col,t)))));
-    if(t<T)
-        plot([t t+1], [X_atual x_next(X_atual,y(t),q(col,t))], 'r');
-        X_atual=x_next(X_atual,y(t),q(col,t))
-    end;
+    for i=1:size(X,2)
+        text(t,X(i)+100,strcat('c*=',num2str(fix(c(i,t)))));
+        text(t,X(i),strcat('q*=',num2str(fix(q(i,t)))));
+        if(t<T)
+            plot([t t+1], [X(i) x_next(X(i),y(t),q(i,t))]);
+        end;
+    end
 end
 axis([1-1 T+1 X(1)-1000 X(end)+1000]);
 xlabel('Estágio t');
 ylabel('Volume Reservatório [hm³]');
+
+%%
+%plot solução ótima
+% X_atual=22950;
+% for t=1:1:T
+%     plot(t,X_atual,'r.','MarkerSize',20);
+%     hold on;
+%     [row,col]=find(X==X_atual)
+%     text(t,X_atual+100,strcat('c*=',num2str(fix(c(col,t)))));
+%     text(t,X_atual,strcat('q*=',num2str(fix(q(col,t)))));
+%     if(t<T)
+%         plot([t t+1], [X_atual x_next(X_atual,y(t),q(col,t))], 'r');
+%         X_atual=x_next(X_atual,y(t),q(col,t))
+%     end;
+% end
+% axis([1-1 T+1 X(1)-1000 X(end)+1000]);
+% xlabel('Estágio t');
+% ylabel('Volume Reservatório [hm³]');
